@@ -1,0 +1,24 @@
+# Set variable W (salary)
+salary <-c(30000, 60000, 30000, 60000, 30000, 60000, 8000, 3000, 10000, 8000, 3000, 10000, 8000, 3000, 10000)
+
+# Set variable X (age)
+age <- c(41, 41, 28, 33, 32, 19,41, 28, 33, 32, 19,28, 33, 32, 19)
+
+# Set variable Y (height)
+height <- c(182, 172, 160, 182, 182, 172, 160, 178, 181, 172, 160, 178, 181, 178, 181)
+
+# Set variable Z (occupation)
+occupation <- c('Doctor', 'Police', 'Teacher', 'Teacher', 'Police','Doctor', 'Police', 'Teacher', 'Teacher', 'Police','Doctor', 'Police', 'Teacher', 'Teacher', 'Police')
+
+# Create DataFrame
+df <- data.frame(salary, age, height, occupation)
+
+# Show DataFrame
+print (df)
+
+# load lattice package
+require(lattice)
+
+# drop doctor to show only two plots
+dropData <- droplevels(subset(df, occupation != "Doctor"))
+print(xyplot(salary~age | occupation, data = dropData, grid = TRUE, main = "A Simple Plot for the GCI"))
